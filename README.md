@@ -1,21 +1,7 @@
-## Questions
-
-### `Did you use a npm library to manage local data storage?`
-No it's using local storage included in Chrome 
-### `Why do you think this option is the best vs alternatives?`
-Because it's flexible easy to use and maintain 
-### `Please explain why did you decide to use this UI Components vs alternatives?`
-This UI is easy to implement and maintain since it's using pure css not js 
-### `What other libraries you had to use to accomplish the project?`
-I have used font-awesome , express and moment 
-### `What was the most difficult to accomplish? please share your experience.`
-The application was really demanding since it includes a lot of unit testing and implementation of modern thecniques of scripting 
-### `How much time did you spend building this test?`
-it took almost 45 hours 
 
 ## Available Scripts
 
-In the project directory, you can run:
+`npm-run-all build-css build-js`
 
 ### `yarn start` or `react-scripts start`
 
