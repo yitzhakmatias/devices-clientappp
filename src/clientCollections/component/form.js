@@ -1,14 +1,14 @@
 import React, {useContext, useState, useRef} from 'react';
 import {useForm} from "react-hook-form";
 import ClientList from "./clientList";
-import BookContext from "../../context/IBookContext";
+import BookContext from "../../context/IClientContext";
 import uuid from 'react-uuid'
 
 const NewBookCollection = ({id}) => {
 
 
     const [collectionList, setCollectionList] = useState([]);
-    const [bookList, setBookList] = useState([]);
+    const [clientList, setClientList] = useState([]);
 
     const [action, setAction] = useState("");
     const {register, handleSubmit} = useForm({
@@ -21,7 +21,7 @@ const NewBookCollection = ({id}) => {
         if (id.constructor !== Object) {
             let collection = bookContext.bookList.find(p => p.id === id);
             setCollectionList(collection.uuids);
-            setBookList(collection);
+            setClientList(collection);
         }
 
     }, [id]);
@@ -60,7 +60,7 @@ const NewBookCollection = ({id}) => {
 
         if (action === "add") {
             const bookCollection = {
-                id: bookList.id !== undefined ? bookList.id : uuid(),
+                id: clientList.id !== undefined ? clientList.id : uuid(),
                 name: data.listName,
                 uuids: collectionList
             };
@@ -70,7 +70,7 @@ const NewBookCollection = ({id}) => {
         }
         if (action === "remove") {
 
-            bookContext.removeBookList(bookList.id !== undefined ? bookList.id : 0);
+            bookContext.removeBookList(clientList.id !== undefined ? clientList.id : 0);
         }
     };
 
@@ -90,7 +90,7 @@ const NewBookCollection = ({id}) => {
                     <div className="control">
                         <input className="input is-primary"
                                type="text" placeholder="Name"
-                               defaultValue={bookList !== undefined ? bookList.name : ""}
+                               defaultValue={clientList !== undefined ? clientList.name : ""}
                                name="listName"
                                ref={register()}/>
                     </div>

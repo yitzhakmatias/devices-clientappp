@@ -1,14 +1,14 @@
 import React, {useContext, useEffect, useState} from 'react';
-import BookContext from "../../context/IBookContext";
+import ClientContext from "../../context/IClientContext";
 
 import "./clientList.scss"
 import ClientElement from "./clientElement";
 
 
 const Clientlist = ({props, editBook}) => {
-    const bookContext = useContext(BookContext);
+    const clientContext = useContext(ClientContext);
 
-    const [books, setBooks] = React.useState([]);
+    const [clients, setClients] = React.useState([]);
 
     const [pagination, setPagination] = React.useState({
         currentPage: 1,
@@ -24,8 +24,8 @@ const Clientlist = ({props, editBook}) => {
     const getData = () => {
         const indexOfLastTodo = pagination.currentPage * pagination.pageSize;
         const indexOfFirstTodo = indexOfLastTodo - pagination.pageSize;
-        setBooks(bookContext.Clients.slice(indexOfFirstTodo, indexOfLastTodo));
-        pageNumberList(bookContext.Clients);
+        setClients(clientContext.Clients.slice(indexOfFirstTodo, indexOfLastTodo));
+        pageNumberList(clientContext.Clients);
     };
     const pageNumberList = (books) => {
         const pageNumbers = [];
@@ -51,11 +51,11 @@ const Clientlist = ({props, editBook}) => {
             </li>
         );
     });
-    const itemRows = books.sort((a, b) => (a.createdDate < b.createdDate) ? 1 : -1).map((book, i) => (
+    const itemRows = clients.sort((a, b) => (a.createdDate < b.createdDate) ? 1 : -1).map((book, i) => (
 
 
         <ClientElement book={book} editBook={() => editBook(book.uuid)}
-                       deleteBook={() => bookContext.deleteBook(book.uuid)}/>
+                       deleteBook={() => clientContext.deleteBook(book.uuid)}/>
 
 
     ));

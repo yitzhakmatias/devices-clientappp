@@ -1,7 +1,7 @@
 import React, {useContext, useEffect, useState} from 'react';
 import "./client.scss";
 import ReactTagInput from "@pathofdev/react-tag-input";
-import BookContext from '../../context/IBookContext'
+import BookContext from '../../context/IClientContext'
 import {useForm} from "react-hook-form";
 import uuid from 'react-uuid'
 

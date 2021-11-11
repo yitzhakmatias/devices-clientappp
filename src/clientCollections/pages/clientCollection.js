@@ -1,7 +1,7 @@
 import React, {Component, useContext, useState} from 'react';
 import NewBookCollection from "../component/form";
 import CollectionList from "../component/collectionList";
-import BookContext from "../../context/IBookContext";
+import BookContext from "../../context/IClientContext";
 
 const ClientCollection = () => {
     const [id, setClientIdCollection] = useState({});

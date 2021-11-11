@@ -3,17 +3,17 @@ import React, {useContext, useState} from 'react';
 import Clientlist from '../components/clientlist'
 import ModalClient from "../components/modalClient";
 import Client from "../components/client";
-import BookContext from "../../context/IBookContext";
+import BookContext from "../../context/IClientContext";
 
 
 const Clients = () => {
     const [showModal, setShowModal] = useState(false);
-    const [book, setBook] = useState({});
+    const [client, setClient] = useState({});
     const bookContext = useContext(BookContext);
 
     const inputChangeHandler = (uuid) => {
         let book = bookContext.Clients.find(p => p.uuid === uuid);
-        setBook(book);
+        setClient(book);
         setShowModal(true);
     };
     const handleVisibility = () => {
@@ -30,7 +30,7 @@ const Clients = () => {
                 </div>
                 <div className="tile is-parent">
                         {showModal ?
-                            <ModalClient book={book} isVisible={() => handleVisibility()}/>
+                            <ModalClient book={client} isVisible={() => handleVisibility()}/>
                             : null}
 
                         <article className="panel is-primary has-background-white">

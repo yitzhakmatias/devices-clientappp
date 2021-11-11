@@ -1,5 +1,5 @@
 import React, {useContext, useEffect} from 'react';
-import BookContext from "../../context/IBookContext";
+import BookContext from "../../context/IClientContext";
 import {FontAwesomeIcon} from '@fortawesome/react-fontawesome';
 import {faBook} from '@fortawesome/free-solid-svg-icons';
 
