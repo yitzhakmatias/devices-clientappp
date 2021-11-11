@@ -12,8 +12,8 @@ const Clients = () => {
     const bookContext = useContext(BookContext);
 
     const inputChangeHandler = (uuid) => {
-        let book = bookContext.Clients.find(p => p.uuid === uuid);
-        setClient(book);
+        let client = bookContext.Clients.find(p => p.uuid === uuid);
+        setClient(client);
         setShowModal(true);
     };
     const handleVisibility = () => {
@@ -29,28 +29,28 @@ const Clients = () => {
                     <Client/>
                 </div>
                 <div className="tile is-parent">
-                        {showModal ?
-                            <ModalClient book={client} isVisible={() => handleVisibility()}/>
-                            : null}
+                    {showModal ?
+                        <ModalClient book={client} isVisible={() => handleVisibility()}/>
+                        : null}
 
-                        <article className="panel is-primary has-background-white">
-                            <p className="panel-heading">
-                                Client List
-                            </p>
+                    <article className="panel is-primary has-background-white">
+                        <p className="panel-heading">
+                            Client List
+                        </p>
 
-                            <div className="panel-block">
-                                <p className="control has-icons-left">
-                                    <input className="input is-primary" type="text" placeholder="Search"/>
-                                    <span className="icon is-left">
+                        <div className="panel-block">
+                            <p className="control has-icons-left">
+                                <input className="input is-primary" type="text" placeholder="Search"/>
+                                <span className="icon is-left">
                      <i className="fas fa-search" aria-hidden="true"> </i>
                      </span>
-                                </p>
-                            </div>
-                            <div className="panel-block">
-                                <Clientlist editBook={inputChangeHandler}/>
-                            </div>
+                            </p>
+                        </div>
+                        <div className="panel-block">
+                            <Clientlist editBook={inputChangeHandler}/>
+                        </div>
 
-                        </article>
+                    </article>
 
                 </div>
             </div>

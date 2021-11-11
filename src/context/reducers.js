@@ -1,11 +1,11 @@
-export const ADD_CLIENT = "ADD_BOOK";
-export const ADD_CLIENT_LIST = "ADD_BOOK_LIST";
-export const ADD_CHECKED_CLIENT_LIST = "ADD_CHECKED_BOOK_LIST";
-export const REMOVE_CLIENT_LIST = "REMOVE_BOOK_LIST";
-export const REMOVE_BOOK = "REMOVE_BOOK";
-export const GET_BOOKS = "GET_BOOKS";
+export const ADD_CLIENT = "ADD_CLIENT";
+export const ADD_CLIENT_LIST = "ADD_CLIENT_LIST";
+export const ADD_CHECKED_CLIENT_LIST = "ADD_CHECKED_CLIENT_LIST";
+export const REMOVE_CLIENT_LIST = "REMOVE_CLIENT_LIST";
+export const REMOVE_CLIENT = "REMOVE_CLIENT";
+export const GET_CLIENTS = "GET_CLIENTS";
 export const initialState = {
-    books: [
+    clients: [
         /* {
              uuid: "",
              title: "",
@@ -25,64 +25,64 @@ export const initialState = {
     ],
 
 };
-const addBook = (state, book) => {
+const addClient = (state, client) => {
 
-    if (book === []) return {
+    if (client === []) return {
         ...state
     };
-    let storedBook = state.books.find(p => p.uuid === book.uuid);
+    let storedBook = state.clients.find(p => p.uuid === client.uuid);
 
-    if (storedBook !== undefined && state.books !== undefined) {
+    if (storedBook !== undefined && state.clients !== undefined) {
         console.log("update ");
-        let newBooks = state.books.map(p => {
-            if (p.uuid === book.uuid) {
+        let newBooks = state.clients.map(p => {
+            if (p.uuid === client.uuid) {
 
                 return {
                     ...p,
-                    description: book.description,
-                    title: book.title,
-                    tags: book.tags,
-                    imageURL: book.imageURL
+                    description: client.description,
+                    title: client.title,
+                    tags: client.tags,
+                    imageURL: client.imageURL
                 };
             }
             return p;
         });
         return {
             ...state,
-            books: newBooks
+            clients: newBooks
         }
     }
 
-    const newBooks = [...state.books, book];
+    const newBooks = [...state.clients, client];
 
     return {
         ...state,
-        books: newBooks
+        clients: newBooks
     }
 };
 const removeBook = (state, id) => {
-    let books = state.books.filter(p => p.uuid !== id);
+    let books = state.clients.filter(p => p.uuid !== id);
     return {
         ...state,
-        books: books
+        clients: books
     }
 };
 
-const addBookList = (state, bookList) => {
+const addBookList = (state, clientList) => {
 
-    if (bookList === []) return {
+    if (clientList === []) return {
         ...state
     };
-    let storedListBook = state.bookList.find(p => p.id === bookList.id);
+    let storedListBook = state.bookList.find(p => p.uuid === clientList.uuid);
 
     if (storedListBook !== undefined && storedListBook.uuids !== undefined) {
 
         let newBooks = state.bookList.map(p => {
-            if (p.id === bookList.id) {
+            if (p.uuid === clientList.uuid) {
                 return {
                     ...p,
-                    name: bookList.name,
-                    uuids: bookList.uuids
+                    name: clientList.name,
+                    uuids: clientList.uuids
                 };
             }
             return p;
@@ -95,17 +95,18 @@ const addBookList = (state, bookList) => {
         }
     }
 
-    const newBookList = [...state.bookList, bookList];
+    const newBookList = [...state.bookList, clientList];
 
     return {
         ...state,
         bookList: newBookList
     }
 };
-const removeBookList = (state, id) => {
-    let lists = state.bookList.filter(p => p.id !== id);
+const removeBookList = (state, uuid) => {
+    let lists = state.bookList.filter(p => p.uuid !== uuid);
     return {
         ...state,
+        clients : lists,
         bookList: lists
     }
 };
@@ -123,16 +124,16 @@ export const bookReducer = (state, action) => {
 
     switch (action.type) {
         case ADD_CLIENT: {
-            return addBook(state, action.Book);
+            return addClient(state, action.Book);
         }
-        case REMOVE_BOOK: {
+        case REMOVE_CLIENT: {
             return removeBook(state, action.uuid);
         }
         case ADD_CLIENT_LIST: {
             return addBookList(state, action.bookList);
         }
         case REMOVE_CLIENT_LIST: {
-            return removeBookList(state, action.id);
+            return removeBookList(state, action.uuid);
         }
         case ADD_CHECKED_CLIENT_LIST: {
             return addCheckedBookList(state, action.bookList);

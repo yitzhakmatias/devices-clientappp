@@ -16,7 +16,9 @@ const Clientlist = ({props, editBook}) => {
         pageNumbers: [],
         lastPage: 0
     });
-
+    React.useEffect(() => {
+        getData();
+    }, [clientContext.Clients]);
     React.useEffect(() => {
         getData();
     }, [pagination.currentPage]);
@@ -51,11 +53,11 @@ const Clientlist = ({props, editBook}) => {
             </li>
         );
     });
-    const itemRows = clients.sort((a, b) => (a.createdDate < b.createdDate) ? 1 : -1).map((book, i) => (
+    const itemRows = clients.sort((a, b) => (a.createdDate < b.createdDate) ? 1 : -1).map((client, i) => (
 
 
-        <ClientElement book={book} editBook={() => editBook(book.uuid)}
-                       deleteBook={() => clientContext.deleteBook(book.uuid)}/>
+        <ClientElement book={client} editBook={() => editBook(client.uuid)}
+                       deleteBook={() => clientContext.deleteBook(client.uuid)}/>
 
 
     ));

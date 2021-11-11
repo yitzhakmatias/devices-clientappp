@@ -3,9 +3,9 @@ import BookContext from "./IClientContext";
 import {
     bookReducer,
     ADD_CLIENT,
-    REMOVE_BOOK,
+    REMOVE_CLIENT,
     initialState,
-    GET_BOOKS,
+    GET_CLIENTS,
     ADD_CLIENT_LIST,
     REMOVE_CLIENT_LIST,
     ADD_CHECKED_CLIENT_LIST
@@ -16,19 +16,19 @@ const GlobalState = props => {
 
 
     const [state, dispatch] = useReducer(bookReducer, initialState, () => {
-        if (!localStorage.hasOwnProperty('books')) return initialState;
-        const data = localStorage.getItem('books');
+        if (!localStorage.hasOwnProperty('clients')) return initialState;
+        const data = localStorage.getItem('clients');
         const booksList = localStorage.getItem('booksList');
         if (data === "undefined") return initialState;
 
         return data ? {
-            books: JSON.parse(data),
+            clients: JSON.parse(data),
             count: JSON.parse(data).length,
             bookList: booksList !== null ? JSON.parse(booksList) : []
         } : [];
     });
     useEffect(() => {
-        localStorage.setItem('books', JSON.stringify(state.books));
+        localStorage.setItem('clients', JSON.stringify(state.clients));
         localStorage.setItem('booksList', JSON.stringify(state.bookList));
     }, [state]);
 
@@ -77,7 +77,7 @@ const GlobalState = props => {
         <BookContext.Provider value={{
             addBook: addBook,
             deleteBook: removeBook,
-            Clients: state.books ?? [],
+            Clients: state.clients ?? [],
             count: state.count,
             addBookList: addBookList,
             removeBookList: removeBookList,
