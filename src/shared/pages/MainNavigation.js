@@ -5,7 +5,7 @@ const MainNavigation = () => {
     return (
         <nav className="navbar" role="navigation" aria-label="main navigation">
             <div className="navbar-brand">
-                <a className="navbar-item" href="/books">
+                <a className="navbar-item" href="/clients">
                     <img src="https://bulma.io/images/bulma-logo.png" width="112" height="28"/>
                 </a>
 
@@ -18,11 +18,11 @@ const MainNavigation = () => {
             </div>
             <div id="navbarBasicExample" className="navbar-menu">
                 <div className="navbar-start">
-                    <a className="navbar-item" href="/books">
-                        Books
+                    <a className="navbar-item" href="/clients">
+                        Clients
                     </a>
                     <a className="navbar-item" href="/lists">
-                        Book List
+                        Client List
                     </a>
                 </div>
 

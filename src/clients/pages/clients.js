@@ -35,7 +35,7 @@ const Clients = () => {
 
                         <article className="panel is-primary has-background-white">
                             <p className="panel-heading">
-                                Book List
+                                Client List
                             </p>
 
                             <div className="panel-block">

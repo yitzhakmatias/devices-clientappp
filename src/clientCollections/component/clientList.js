@@ -99,7 +99,7 @@ const ClientList = ({handelOnCheck, collectionList}) => {
     });
     return (
         <div>
-            <label className="label">Select a book(s) </label>
+            <label className="label">Select Client(s) </label>
             <ul>
                 {item}
             </ul>

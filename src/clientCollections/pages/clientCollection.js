@@ -20,7 +20,7 @@ const ClientCollection = () => {
                 </div>
                 <div className="tile is-parent ">
                     <article className="tile is-child box">
-                        <p className="title">Add New Book Collection</p>
+                        <p className="title">Add New Client Collection</p>
                         <p className="subtitle">With some content</p>
                         <NewBookCollection id={id}/>
                     </article>
