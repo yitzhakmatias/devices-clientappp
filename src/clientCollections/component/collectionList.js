@@ -4,14 +4,14 @@ import {FontAwesomeIcon} from '@fortawesome/react-fontawesome';
 import {faBook} from '@fortawesome/free-solid-svg-icons';
 
 
-const CollectionList = ({editListOfBooks}) => {
+const CollectionList = ({editListOfClients}) => {
     const bookContext = useContext(BookContext);
     useEffect(() => {
         console.log("collection");
     });
     const items = bookContext.bookList.map((book, i) => (
         <li key={i}>
-            <a className="panel-block is-active" onClick={() => editListOfBooks(book.id)}>
+            <a className="panel-block is-active" onClick={() => editListOfClients(book.id)}>
              <span className="panel-icon">
                   <i><FontAwesomeIcon icon={faBook}/></i>
              </span>

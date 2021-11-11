@@ -1,7 +1,7 @@
 import React from 'react';
 import Client from "./client";
 
-const ModalBook = ({book,isVisible}) => {
+const ModalClient = ({book: client,isVisible}) => {
     return (
         <div className="modal  is-active">
             <div className="modal-background"/>
@@ -11,7 +11,7 @@ const ModalBook = ({book,isVisible}) => {
                     <button className="delete" aria-label="close" onClick={()=>isVisible()}/>
                 </header>
                 <section className="modal-card-body">
-                   <Client client={book} save={()=>isVisible()}/>
+                   <Client client={client} save={()=>isVisible()}/>
                 </section>
             </div>
         </div>
@@ -19,4 +19,4 @@ const ModalBook = ({book,isVisible}) => {
     );
 };
 
-export default ModalBook;
+export default ModalClient;

@@ -1,7 +1,7 @@
 import React, {createContext} from 'react';
 
 export default createContext({
-    Books: [{}],
+    Clients: [{}],
     addBook: () => {},
     deleteBook: () => {},
     addCheckedBookList: () => {},

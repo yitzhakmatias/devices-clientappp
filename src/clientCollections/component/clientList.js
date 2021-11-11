@@ -2,7 +2,7 @@ import React, {useContext} from 'react';
 import BookContext from "../../context/IBookContext";
 
 
-const BookList = ({handelOnCheck, collectionList}) => {
+const ClientList = ({handelOnCheck, collectionList}) => {
 
     const [books, setBooks] = React.useState([]);
     const [selectedBooks, setSelectedBooks] = React.useState([]);
@@ -26,8 +26,8 @@ const BookList = ({handelOnCheck, collectionList}) => {
     const getData = () => {
         const indexOfLastTodo = pagination.currentPage * pagination.pageSize;
         const indexOfFirstTodo = indexOfLastTodo - pagination.pageSize;
-        setBooks(bookContext.Books.slice(indexOfFirstTodo, indexOfLastTodo));
-        pageNumberList(bookContext.Books);
+        setBooks(bookContext.Clients.slice(indexOfFirstTodo, indexOfLastTodo));
+        pageNumberList(bookContext.Clients);
     };
 
     const pageNumberList = (books) => {
@@ -125,4 +125,4 @@ const BookList = ({handelOnCheck, collectionList}) => {
     );
 };
 
-export default BookList;
+export default ClientList;

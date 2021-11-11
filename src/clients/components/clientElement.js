@@ -1,7 +1,7 @@
 import React from 'react';
 import Moment from "react-moment";
 
-const BookElement = (props) => {
+const ClientElement = (props) => {
     return (
 
         <div className="box  ">
@@ -56,4 +56,4 @@ const BookElement = (props) => {
     );
 };
 
-export default BookElement;
+export default ClientElement;

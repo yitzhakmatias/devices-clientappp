@@ -1,8 +1,8 @@
 import React, {useContext, useEffect, useState} from 'react';
 import BookContext from "../../context/IBookContext";
 
-import "./bookList.scss"
-import BookElement from "./bookElement";
+import "./clientList.scss"
+import ClientElement from "./clientElement";
 
 
 const Clientlist = ({props, editBook}) => {
@@ -24,8 +24,8 @@ const Clientlist = ({props, editBook}) => {
     const getData = () => {
         const indexOfLastTodo = pagination.currentPage * pagination.pageSize;
         const indexOfFirstTodo = indexOfLastTodo - pagination.pageSize;
-        setBooks(bookContext.Books.slice(indexOfFirstTodo, indexOfLastTodo));
-        pageNumberList(bookContext.Books);
+        setBooks(bookContext.Clients.slice(indexOfFirstTodo, indexOfLastTodo));
+        pageNumberList(bookContext.Clients);
     };
     const pageNumberList = (books) => {
         const pageNumbers = [];
@@ -54,8 +54,8 @@ const Clientlist = ({props, editBook}) => {
     const itemRows = books.sort((a, b) => (a.createdDate < b.createdDate) ? 1 : -1).map((book, i) => (
 
 
-        <BookElement book={book} editBook={() => editBook(book.uuid)}
-                     deleteBook={() => bookContext.deleteBook(book.uuid)}/>
+        <ClientElement book={book} editBook={() => editBook(book.uuid)}
+                       deleteBook={() => bookContext.deleteBook(book.uuid)}/>
 
 
     ));

@@ -1,6 +1,6 @@
 import React, {useContext, useState, useRef} from 'react';
 import {useForm} from "react-hook-form";
-import BookList from "./clientList";
+import ClientList from "./clientList";
 import BookContext from "../../context/IBookContext";
 import uuid from 'react-uuid'
 
@@ -98,7 +98,7 @@ const NewBookCollection = ({id}) => {
                 </div>
                 <div className="field">
 
-                    <BookList handelOnCheck={onCheckList} collectionList={collectionList}/>
+                    <ClientList handelOnCheck={onCheckList} collectionList={collectionList}/>
                 </div>
                 <div className="field is-grouped ">
                     <p className="control">

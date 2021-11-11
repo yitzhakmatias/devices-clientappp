@@ -2,13 +2,13 @@ import React, {useEffect, useReducer, useState} from 'react';
 import BookContext from "./IBookContext";
 import {
     bookReducer,
-    ADD_BOOK,
+    ADD_CLIENT,
     REMOVE_BOOK,
     initialState,
     GET_BOOKS,
-    ADD_BOOK_LIST,
-    REMOVE_BOOK_LIST,
-    ADD_CHECKED_BOOK_LIST
+    ADD_CLIENT_LIST,
+    REMOVE_CLIENT_LIST,
+    ADD_CHECKED_CLIENT_LIST
 } from "./reducers"
 
 
@@ -35,7 +35,7 @@ const GlobalState = props => {
     const addBook = (_book) => {
 
         dispatch({
-            type: ADD_BOOK, Book: {
+            type: ADD_CLIENT, Book: {
                 uuid: _book.uuid,
                 title: _book.title,
                 description: _book.description,
@@ -48,12 +48,12 @@ const GlobalState = props => {
     };
     const removeBook = (uuid) => {
 
-        dispatch({type: REMOVE_BOOK_LIST, uuid: uuid})
+        dispatch({type: REMOVE_CLIENT_LIST, uuid: uuid})
     };
     const addBookList = (_BookList) => {
         console.log(_BookList);
         dispatch({
-            type: ADD_BOOK_LIST, bookList: {
+            type: ADD_CLIENT_LIST, bookList: {
                 id: _BookList.id,
                 uuids: _BookList.uuids,
                 name: _BookList.name,
@@ -63,13 +63,13 @@ const GlobalState = props => {
     const addCheckedBookList = (_BookList) => {
 
         dispatch({
-            type: ADD_CHECKED_BOOK_LIST, bookList: _BookList
+            type: ADD_CHECKED_CLIENT_LIST, bookList: _BookList
         })
 
     };
     const removeBookList = (id) => {
 
-        dispatch({type: REMOVE_BOOK_LIST, id: id})
+        dispatch({type: REMOVE_CLIENT_LIST, id: id})
     };
 
 
@@ -77,7 +77,7 @@ const GlobalState = props => {
         <BookContext.Provider value={{
             addBook: addBook,
             deleteBook: removeBook,
-            Books: state.books ?? [],
+            Clients: state.books ?? [],
             count: state.count,
             addBookList: addBookList,
             removeBookList: removeBookList,

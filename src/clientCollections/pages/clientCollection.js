@@ -4,19 +4,19 @@ import CollectionList from "../component/collectionList";
 import BookContext from "../../context/IBookContext";
 
 const ClientCollection = () => {
-    const [id, setBookIdCollection] = useState({});
+    const [id, setClientIdCollection] = useState({});
     const bookContext = useContext(BookContext);
 
     function editListOfBooks(id) {
         let collection = bookContext.bookList.filter(p => p.id === id)[0];
-        setBookIdCollection(collection.id);
+        setClientIdCollection(collection.id);
     }
 
     return (
         <section className="section">
             <div className="tile is-ancestor">
                 <div className="tile is-parent is-3">
-                    <CollectionList editListOfBooks={editListOfBooks}/>
+                    <CollectionList editListOfClients={editListOfBooks}/>
                 </div>
                 <div className="tile is-parent ">
                     <article className="tile is-child box">

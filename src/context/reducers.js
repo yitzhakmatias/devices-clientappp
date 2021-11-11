@@ -1,7 +1,7 @@
-export const ADD_BOOK = "ADD_BOOK";
-export const ADD_BOOK_LIST = "ADD_BOOK_LIST";
-export const ADD_CHECKED_BOOK_LIST = "ADD_CHECKED_BOOK_LIST";
-export const REMOVE_BOOK_LIST = "REMOVE_BOOK_LIST";
+export const ADD_CLIENT = "ADD_BOOK";
+export const ADD_CLIENT_LIST = "ADD_BOOK_LIST";
+export const ADD_CHECKED_CLIENT_LIST = "ADD_CHECKED_BOOK_LIST";
+export const REMOVE_CLIENT_LIST = "REMOVE_BOOK_LIST";
 export const REMOVE_BOOK = "REMOVE_BOOK";
 export const GET_BOOKS = "GET_BOOKS";
 export const initialState = {
@@ -122,19 +122,19 @@ const addCheckedBookList = (state, bookList) => {
 export const bookReducer = (state, action) => {
 
     switch (action.type) {
-        case ADD_BOOK: {
+        case ADD_CLIENT: {
             return addBook(state, action.Book);
         }
         case REMOVE_BOOK: {
             return removeBook(state, action.uuid);
         }
-        case ADD_BOOK_LIST: {
+        case ADD_CLIENT_LIST: {
             return addBookList(state, action.bookList);
         }
-        case REMOVE_BOOK_LIST: {
+        case REMOVE_CLIENT_LIST: {
             return removeBookList(state, action.id);
         }
-        case ADD_CHECKED_BOOK_LIST: {
+        case ADD_CHECKED_CLIENT_LIST: {
             return addCheckedBookList(state, action.bookList);
         }
         default:

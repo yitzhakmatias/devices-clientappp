@@ -1,5 +1,5 @@
 import React, {useContext, useEffect, useState} from 'react';
-import "./book.scss";
+import "./client.scss";
 import ReactTagInput from "@pathofdev/react-tag-input";
 import BookContext from '../../context/IBookContext'
 import {useForm} from "react-hook-form";
@@ -25,7 +25,7 @@ const Client = ({client, save}) => {
 
         while (existUUID) {
             uuidLocal = uuid();
-            let data = bookContext.Books.find(p => p.uuid === uuidLocal);
+            let data = bookContext.Clients.find(p => p.uuid === uuidLocal);
             existUUID = data !== undefined;
         }
         data.uuid = client !== undefined ? client.uuid : uuidLocal;
