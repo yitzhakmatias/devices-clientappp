@@ -1,5 +1,6 @@
 import React, {useEffect, useReducer, useState} from 'react';
 import BookContext from "./IClientContext";
+import axios from 'axios';
 import {
     bookReducer,
     ADD_CLIENT,
@@ -13,7 +14,7 @@ import {
 
 
 const GlobalState = props => {
-
+    const [devices, setDevices] = useState([])
 
     const [state, dispatch] = useReducer(bookReducer, initialState, () => {
         if (!localStorage.hasOwnProperty('clients')) return initialState;
@@ -30,19 +31,37 @@ const GlobalState = props => {
     useEffect(() => {
         localStorage.setItem('clients', JSON.stringify(state.clients));
         localStorage.setItem('booksList', JSON.stringify(state.bookList));
+
+        const fetchData = async () =>{
+
+            try {
+                const {data: response} = await axios.get('http://localhost:3000/devices');
+                let res = JSON.stringify(response);
+                setDevices(res);
+            } catch (error) {
+                console.error(error.message);
+            }
+        }
+
+       fetchData();
+
     }, [state]);
 
-    const addBook = (_book) => {
+    const addBook = (_client) => {
 
         dispatch({
             type: ADD_CLIENT, Book: {
-                uuid: _book.uuid,
-                title: _book.title,
-                description: _book.description,
-                tags: _book.tags,
-                imageURL: _book.imageURL,
-                createdDate: _book.createdDate,
-                lists: _book.lists
+                id : _client.id,
+                uuid: _client.uuid,
+                title: _client.title,
+                description: _client.description,
+                tags: _client.tags,
+                imageURL: _client.imageURL,
+                createdDate: _client.createdDate,
+                lists: _client.lists,
+                system_name : _client.system_name,
+                type : _client.type,
+                hdd_capacity: _client.hdd_capacity
             }
         })
     };

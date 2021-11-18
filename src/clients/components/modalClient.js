@@ -7,7 +7,7 @@ const ModalClient = ({book: client,isVisible}) => {
             <div className="modal-background"/>
             <div className="modal-card">
                 <header className="modal-card-head">
-                    <p className="modal-card-title">Book</p>
+                    <p className="modal-card-title">Client</p>
                     <button className="delete" aria-label="close" onClick={()=>isVisible()}/>
                 </header>
                 <section className="modal-card-body">

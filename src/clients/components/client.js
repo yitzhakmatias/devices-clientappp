@@ -3,10 +3,11 @@ import "./client.scss";
 import ReactTagInput from "@pathofdev/react-tag-input";
 import BookContext from '../../context/IClientContext'
 import {useForm} from "react-hook-form";
-import uuid from 'react-uuid'
+import uuid from 'react-uuid';
 
 const Client = ({client, save}) => {
     const [tags, setTags] = useState([]);
+    const [type, setType] = useState("");
     const {register, handleSubmit} = useForm({
         nativeValidation: true
     });
@@ -17,7 +18,9 @@ const Client = ({client, save}) => {
             setTags(client.tags);
         }
     }, []);
-
+    const handleChange =(e)=>{
+        setType(e.target.value);
+    }
     const onSubmit = (data, e) => {
 
         let uuidLocal;
@@ -28,13 +31,14 @@ const Client = ({client, save}) => {
             let data = bookContext.Clients.find(p => p.uuid === uuidLocal);
             existUUID = data !== undefined;
         }
+        data.id = client !== undefined ? client.uuid : uuidLocal;
         data.uuid = client !== undefined ? client.uuid : uuidLocal;
 
         data.tags = tags;
 
         data.createdDate = new Date();
-
-        fetch('https://loremflickr.com/g/320/240/book').then(r => {
+        data.type = type;
+        fetch('https://loremflickr.com/g/320/240/laptop').then(r => {
             console.log(r);
             data.imageURL = r.url;
             bookContext.addBook(data);
@@ -54,44 +58,41 @@ const Client = ({client, save}) => {
                     <div className="tile is-child box">
 
                         <div className="field">
-                            <label className="label">Title</label>
+                            <label className="label">System Name</label>
                             <div className="control">
-                                <input className="input is-light" type="text" placeholder="Please enter  Title "
-                                       defaultValue={client !== undefined ? client.title : ""}
-                                       ref={register({required: "Please enter  Title"})}
-                                       name="title"/>
-                                <p className="help is-danger">Please enter Title</p>
+                                <input className="input is-light" type="text" placeholder="Please enter  System Name "
+                                       defaultValue={client !== undefined ? client.system_name : ""}
+                                       ref={register({required: "Please enter  System Name"})}
+                                       name="system_name"/>
+                                <p className="help is-danger">Please enter System Name</p>
                             </div>
                         </div>
                         <div className="field">
-                            <label className="label">Description</label>
+                            <label className="label">Type</label>
                             <div className="control">
-                                <textarea className="textarea is-light" placeholder="Please enter  Client Description..."
-                                          defaultValue={client !== undefined ? client.description : ""}
-                                          ref={register({required: "Please enter  Client Description"})}
-                                          name="description"/>
+                                <div className="select is-primary" >
+                                    <select  defaultValue={client !== undefined ? client.type : ""}
+                                             onChange={(e)=>setType(e.target.value)}
+                                             value={client !== undefined ? client.type : ""}
+                                             ref={register()}
+                                    >
+                                        <option selected  value="Windows Workstation">Windows Workstation</option>
+                                        <option value="Windows Serve">Windows Serve</option>
+                                        <option value="Mac">Mac</option>
+                                    </select>
+                                </div>
 
                             </div>
                         </div>
                         <div className="field">
-                            <label className="label">Image URL </label>
+                            <label className="label">HDD Capacity </label>
                             <div className="control">
-                                <input className="input is-light" placeholder="Please enter a URL..."
-                                       defaultValue={client !== undefined ? client.imageURL : ""}
+                                <input className="input is-light" placeholder="Please enter a HDD Capacity..."
+                                       defaultValue={client !== undefined ? client.hdd_capacity : ""}
                                        ref={register()}
-                                       name="url"/>
+                                       name="hdd_capacity"/>
 
                             </div>
-                        </div>
-                        <div className="container">
-                            <label className="label">Client Tags</label>
-                            <ReactTagInput
-                                className="input is-light"
-                                tags={tags}
-                                placeholder="Type and press enter"
-                                onChange={(newTags) => setTags(newTags)}
-
-                            />
                         </div>
                         <br/>
                         <div className="field is-grouped is-grouped-centered">
